@@ -11,25 +11,31 @@
 # hlsearch on (H) or off (h):
 ~h
 # Last Search Pattern:
-~MSle0~/EXTRA
+~Msle0~/\<SIZE\>
 
 # Command Line History (newest to oldest):
 :wq
-|2,0,1680594537,,"wq"
+|2,0,1684577956,,"wq"
+:q
+|2,0,1684577934,,"q"
 :Wq
-|2,0,1680594535,,"Wq"
+|2,0,1684562021,,"Wq"
+:1
+|2,0,1684558855,,"1"
 :q!
 |2,0,1680589882,,"q!"
-:q
-|2,0,1680589811,,"q"
 :set mouse=a
 |2,0,1680589751,,"set mouse=a"
 
 # Search String History (newest to oldest):
+? \<SIZE\>
+|2,1,1684577216,,"\\<SIZE\\>"
+?/UPR
+|2,1,1684560507,47,"UPR"
+?/schedul
+|2,1,1684464680,47,"schedul"
 ?/EXTRA
 |2,1,1680587966,47,"EXTRA"
-?/UPR
-|2,1,1680587934,47,"UPR"
 
 # Expression History (newest to oldest):
 
@@ -38,247 +44,483 @@
 # Debug Line History (newest to oldest):
 
 # Registers:
+"0	CHAR	0
+	 uint eip;
+	};
+	
+	enum procstate { UNUSED, EMBRYO, SLEEPING, RUNNABLE, RUNNING, ZOMBIE };
+	
+	// Per-process state
+	struct proc {
+	  uint sz;                     // Size of process memory (bytes)
+	  pde_t* pgdir;                // Page table
+	  char *kstack;                // Bottom of kernel stack for this process
+	  enum procstate state;        // Process state
+	  int pid;                     // Process ID
+	  struct proc *parent;         // Parent process
+	  struct trapframe *tf;        // Trap frame for current syscall
+	  struct context *context;     // swtch() here to run process
+	  void *chan;                  // If non-zero, sleeping on chan
+	  int killed;                  // If non-zero, have been killed
+	  struct file *ofile[NOFILE];  // Open files
+	  struct inode *cwd;           // Current directory
+	  char name[16];               // Process name (debugging)
+	  int tickets;				  // Scheduler Tickets
+	};
+	
+	// Process memory is laid out contiguously, low addresses first:
+	//   text
+	//   original data and bss
+	//   fixed-size stack
+	//   expandable heap
+|3,0,0,0,28,0,1684558370," uint eip;","};","","enum procstate { UNUSED, EMBRYO, SLEEPING, RUNNABLE, RUNNING, ZOMBIE };","","// Per-process state","struct proc {","  uint sz;                     // Size of process memory (bytes)","  pde_t* pgdir;                // Page table","  char *kstack;                // Bottom of kernel stack for this process","  enum procstate state;        // Process state","  int pid;                     // Process ID",>50
+|<"  struct proc *parent;         // Parent process","  struct trapframe *tf;        // Trap frame for current syscall","  struct context *context;     // swtch() here to run process","  void *chan;                  // If non-zero, sleeping on chan","  int killed;                  // If non-zero, have been killed","  struct file *ofile[NOFILE];  // Open files","  struct inode *cwd;           // Current directory","  char name[16];               // Process name (debugging)",>42
+|<"  int tickets;				  // Scheduler Tickets","};","","// Process memory is laid out contiguously, low addresses first:","//   text","//   original data and bss","//   fixed-size stack","//   expandable heap"
 "1	LINE	0
-	map <F8><ESC>:set mouse-=a<CR>
-|3,0,1,1,1,0,1680589795,"map <F8><ESC>:set mouse-=a<CR>"
+		_setuptickets\
+|3,0,1,1,1,0,1684561860,"	_setuptickets\\"
 "2	LINE	0
-	map <F7><ESC>:set mouse=a<CR>
-|3,0,2,1,1,0,1680589794,"map <F7><ESC>:set mouse=a<CR>"
+		exit_child(pㅇㅇ);
+|3,0,2,1,1,0,1684561200,"	exit_child(pㅇㅇ);"
 "3	LINE	0
-	#define SYS_test   22
-|3,0,3,1,1,0,1680588845,"#define SYS_test   22"
+	  int tickets_passed = p->tickets;
+|3,0,3,1,1,0,1684557739,"  int tickets_passed = p->tickets;"
 "4	LINE	0
-	test)
-|3,0,4,1,1,0,1680588816,"test)"
+	  int winner = Random_Number;
+|3,0,4,1,1,0,1684557738,"  int winner = Random_Number;"
+"5	LINE	0
+	  int totalTickets = 0;
+|3,0,5,1,1,0,1684557737,"  int totalTickets = 0;"
+"6	LINE	0
+		iddunsigned long arr[SIZE];
+|3,0,6,1,1,0,1684464193,"	iddunsigned long arr[SIZE];"
+"7	LINE	0
+	map <F8><ESC>:set mouse-=a<CR>
+|3,0,7,1,1,0,1680589795,"map <F8><ESC>:set mouse-=a<CR>"
+"8	LINE	0
+	map <F7><ESC>:set mouse=a<CR>
+|3,0,8,1,1,0,1680589794,"map <F7><ESC>:set mouse=a<CR>"
+"9	LINE	0
+	#define SYS_test   22
+|3,0,9,1,1,0,1680588845,"#define SYS_test   22"
 ""-	CHAR	0
-	 
-|3,1,36,0,1,0,1680590077," "
+	a
+|3,1,36,0,1,0,1684577598,"a"
 
 # File marks:
-'0  2  0  ~/xv6-public/test
-|4,48,2,0,1680594537,"~/xv6-public/test"
-'1  2  11  ~/.gitconfig
-|4,49,2,11,1680592412,"~/.gitconfig"
-'2  7  7  ~/xv6-public/test.c
-|4,50,7,7,1680590426,"~/xv6-public/test.c"
-'3  6  10  ~/xv6-public/test.c
-|4,51,6,10,1680590287,"~/xv6-public/test.c"
-'4  6  10  ~/xv6-public/test.c
-|4,52,6,10,1680590287,"~/xv6-public/test.c"
-'5  8  0  ~/xv6-public/test.c
-|4,53,8,0,1680590091,"~/xv6-public/test.c"
-'6  8  0  ~/xv6-public/test.c
-|4,54,8,0,1680590091,"~/xv6-public/test.c"
-'7  8  0  ~/xv6-public/test.c
-|4,55,8,0,1680590091,"~/xv6-public/test.c"
-'8  8  0  ~/xv6-public/test.c
-|4,56,8,0,1680590091,"~/xv6-public/test.c"
-'9  8  1  ~/xv6-public/test.c
-|4,57,8,1,1680589882,"~/xv6-public/test.c"
+'0  1  16  ~/xv6-public/rand.h
+|4,48,1,16,1684577956,"~/xv6-public/rand.h"
+'1  1  0  ~/xv6-public/proc.c
+|4,49,1,0,1684577934,"~/xv6-public/proc.c"
+'2  328  0  ~/xv6-public/proc.c
+|4,50,328,0,1684577757,"~/xv6-public/proc.c"
+'3  328  0  ~/xv6-public/proc.c
+|4,51,328,0,1684577757,"~/xv6-public/proc.c"
+'4  1  0  ~/xv6-public/proc.c
+|4,52,1,0,1684577645,"~/xv6-public/proc.c"
+'5  1  0  ~/xv6-public/proc.c
+|4,53,1,0,1684577645,"~/xv6-public/proc.c"
+'6  1  0  ~/xv6-public/proc.c
+|4,54,1,0,1684577645,"~/xv6-public/proc.c"
+'7  3  22  ~/xv6-public/rand.h
+|4,55,3,22,1684577631,"~/xv6-public/rand.h"
+'8  2  22  ~/xv6-public/rand.h
+|4,56,2,22,1684577631,"~/xv6-public/rand.h"
+'9  20  13  ~/xv6-public/rand.c
+|4,57,20,13,1684577621,"~/xv6-public/rand.c"
 
 # Jumplist (newest first):
--'  2  0  ~/xv6-public/test
-|4,39,2,0,1680594537,"~/xv6-public/test"
--'  1  0  ~/xv6-public/test
-|4,39,1,0,1680594530,"~/xv6-public/test"
--'  2  11  ~/.gitconfig
-|4,39,2,11,1680592412,"~/.gitconfig"
--'  2  11  ~/.gitconfig
-|4,39,2,11,1680592412,"~/.gitconfig"
--'  1  0  ~/.gitconfig
-|4,39,1,0,1680592403,"~/.gitconfig"
--'  1  0  ~/.gitconfig
-|4,39,1,0,1680592403,"~/.gitconfig"
--'  7  7  ~/xv6-public/test.c
-|4,39,7,7,1680590426,"~/xv6-public/test.c"
--'  7  7  ~/xv6-public/test.c
-|4,39,7,7,1680590426,"~/xv6-public/test.c"
--'  7  7  ~/xv6-public/test.c
-|4,39,7,7,1680590426,"~/xv6-public/test.c"
--'  7  7  ~/xv6-public/test.c
-|4,39,7,7,1680590426,"~/xv6-public/test.c"
--'  1  0  ~/xv6-public/test.c
-|4,39,1,0,1680590411,"~/xv6-public/test.c"
--'  1  0  ~/xv6-public/test.c
-|4,39,1,0,1680590411,"~/xv6-public/test.c"
--'  1  0  ~/xv6-public/test.c
-|4,39,1,0,1680590411,"~/xv6-public/test.c"
--'  1  0  ~/xv6-public/test.c
-|4,39,1,0,1680590411,"~/xv6-public/test.c"
--'  6  10  ~/xv6-public/test.c
-|4,39,6,10,1680590287,"~/xv6-public/test.c"
--'  6  10  ~/xv6-public/test.c
-|4,39,6,10,1680590287,"~/xv6-public/test.c"
--'  6  10  ~/xv6-public/test.c
-|4,39,6,10,1680590287,"~/xv6-public/test.c"
--'  6  10  ~/xv6-public/test.c
-|4,39,6,10,1680590287,"~/xv6-public/test.c"
--'  6  10  ~/xv6-public/test.c
-|4,39,6,10,1680590287,"~/xv6-public/test.c"
--'  6  10  ~/xv6-public/test.c
-|4,39,6,10,1680590287,"~/xv6-public/test.c"
--'  6  10  ~/xv6-public/test.c
-|4,39,6,10,1680590287,"~/xv6-public/test.c"
--'  6  10  ~/xv6-public/test.c
-|4,39,6,10,1680590287,"~/xv6-public/test.c"
--'  1  0  ~/xv6-public/test.c
-|4,39,1,0,1680590273,"~/xv6-public/test.c"
--'  1  0  ~/xv6-public/test.c
-|4,39,1,0,1680590273,"~/xv6-public/test.c"
--'  1  0  ~/xv6-public/test.c
-|4,39,1,0,1680590273,"~/xv6-public/test.c"
--'  1  0  ~/xv6-public/test.c
-|4,39,1,0,1680590273,"~/xv6-public/test.c"
--'  8  0  ~/xv6-public/test.c
-|4,39,8,0,1680590091,"~/xv6-public/test.c"
--'  8  0  ~/xv6-public/test.c
-|4,39,8,0,1680590091,"~/xv6-public/test.c"
--'  8  0  ~/xv6-public/test.c
-|4,39,8,0,1680590091,"~/xv6-public/test.c"
--'  8  0  ~/xv6-public/test.c
-|4,39,8,0,1680590091,"~/xv6-public/test.c"
--'  8  0  ~/xv6-public/test.c
-|4,39,8,0,1680590091,"~/xv6-public/test.c"
--'  8  0  ~/xv6-public/test.c
-|4,39,8,0,1680590091,"~/xv6-public/test.c"
--'  8  0  ~/xv6-public/test.c
-|4,39,8,0,1680590091,"~/xv6-public/test.c"
--'  8  0  ~/xv6-public/test.c
-|4,39,8,0,1680590091,"~/xv6-public/test.c"
--'  8  0  ~/xv6-public/test.c
-|4,39,8,0,1680590091,"~/xv6-public/test.c"
--'  8  0  ~/xv6-public/test.c
-|4,39,8,0,1680590091,"~/xv6-public/test.c"
--'  8  0  ~/xv6-public/test.c
-|4,39,8,0,1680590091,"~/xv6-public/test.c"
--'  8  0  ~/xv6-public/test.c
-|4,39,8,0,1680590091,"~/xv6-public/test.c"
--'  1  0  ~/xv6-public/test.c
-|4,39,1,0,1680590068,"~/xv6-public/test.c"
--'  1  0  ~/xv6-public/test.c
-|4,39,1,0,1680590068,"~/xv6-public/test.c"
--'  1  0  ~/xv6-public/test.c
-|4,39,1,0,1680590068,"~/xv6-public/test.c"
--'  1  0  ~/xv6-public/test.c
-|4,39,1,0,1680590068,"~/xv6-public/test.c"
--'  8  1  ~/xv6-public/test.c
-|4,39,8,1,1680589882,"~/xv6-public/test.c"
--'  8  1  ~/xv6-public/test.c
-|4,39,8,1,1680589882,"~/xv6-public/test.c"
--'  8  1  ~/xv6-public/test.c
-|4,39,8,1,1680589882,"~/xv6-public/test.c"
--'  8  1  ~/xv6-public/test.c
-|4,39,8,1,1680589882,"~/xv6-public/test.c"
--'  1  0  ~/xv6-public/test.c
-|4,39,1,0,1680589823,"~/xv6-public/test.c"
--'  1  0  ~/xv6-public/test.c
-|4,39,1,0,1680589823,"~/xv6-public/test.c"
--'  1  0  ~/xv6-public/test.c
-|4,39,1,0,1680589823,"~/xv6-public/test.c"
--'  1  0  ~/xv6-public/test.c
-|4,39,1,0,1680589823,"~/xv6-public/test.c"
--'  17  10  ~/.vimrc
-|4,39,17,10,1680589807,"~/.vimrc"
--'  17  10  ~/.vimrc
-|4,39,17,10,1680589807,"~/.vimrc"
--'  17  10  ~/.vimrc
-|4,39,17,10,1680589807,"~/.vimrc"
--'  17  10  ~/.vimrc
-|4,39,17,10,1680589807,"~/.vimrc"
--'  17  10  ~/.vimrc
-|4,39,17,10,1680589807,"~/.vimrc"
--'  17  10  ~/.vimrc
-|4,39,17,10,1680589807,"~/.vimrc"
--'  17  10  ~/.vimrc
-|4,39,17,10,1680589807,"~/.vimrc"
--'  17  10  ~/.vimrc
-|4,39,17,10,1680589807,"~/.vimrc"
--'  17  10  ~/.vimrc
-|4,39,17,10,1680589807,"~/.vimrc"
--'  17  10  ~/.vimrc
-|4,39,17,10,1680589807,"~/.vimrc"
--'  17  10  ~/.vimrc
-|4,39,17,10,1680589807,"~/.vimrc"
--'  17  10  ~/.vimrc
-|4,39,17,10,1680589807,"~/.vimrc"
--'  17  10  ~/.vimrc
-|4,39,17,10,1680589807,"~/.vimrc"
--'  17  10  ~/.vimrc
-|4,39,17,10,1680589807,"~/.vimrc"
--'  17  10  ~/.vimrc
-|4,39,17,10,1680589807,"~/.vimrc"
--'  17  10  ~/.vimrc
-|4,39,17,10,1680589807,"~/.vimrc"
--'  17  10  ~/.vimrc
-|4,39,17,10,1680589807,"~/.vimrc"
--'  17  10  ~/.vimrc
-|4,39,17,10,1680589807,"~/.vimrc"
--'  17  10  ~/.vimrc
-|4,39,17,10,1680589807,"~/.vimrc"
--'  17  10  ~/.vimrc
-|4,39,17,10,1680589807,"~/.vimrc"
--'  17  10  ~/.vimrc
-|4,39,17,10,1680589807,"~/.vimrc"
--'  17  10  ~/.vimrc
-|4,39,17,10,1680589807,"~/.vimrc"
--'  17  10  ~/.vimrc
-|4,39,17,10,1680589807,"~/.vimrc"
--'  17  10  ~/.vimrc
-|4,39,17,10,1680589807,"~/.vimrc"
--'  17  10  ~/.vimrc
-|4,39,17,10,1680589807,"~/.vimrc"
--'  17  10  ~/.vimrc
-|4,39,17,10,1680589807,"~/.vimrc"
--'  17  10  ~/.vimrc
-|4,39,17,10,1680589807,"~/.vimrc"
--'  17  10  ~/.vimrc
-|4,39,17,10,1680589807,"~/.vimrc"
--'  17  10  ~/.vimrc
-|4,39,17,10,1680589807,"~/.vimrc"
--'  17  10  ~/.vimrc
-|4,39,17,10,1680589807,"~/.vimrc"
--'  17  10  ~/.vimrc
-|4,39,17,10,1680589807,"~/.vimrc"
--'  17  10  ~/.vimrc
-|4,39,17,10,1680589807,"~/.vimrc"
--'  17  10  ~/.vimrc
-|4,39,17,10,1680589807,"~/.vimrc"
--'  17  10  ~/.vimrc
-|4,39,17,10,1680589807,"~/.vimrc"
--'  17  10  ~/.vimrc
-|4,39,17,10,1680589807,"~/.vimrc"
--'  17  10  ~/.vimrc
-|4,39,17,10,1680589807,"~/.vimrc"
--'  17  10  ~/.vimrc
-|4,39,17,10,1680589807,"~/.vimrc"
--'  17  10  ~/.vimrc
-|4,39,17,10,1680589807,"~/.vimrc"
--'  17  10  ~/.vimrc
-|4,39,17,10,1680589807,"~/.vimrc"
--'  17  10  ~/.vimrc
-|4,39,17,10,1680589807,"~/.vimrc"
--'  17  10  ~/.vimrc
-|4,39,17,10,1680589807,"~/.vimrc"
--'  17  10  ~/.vimrc
-|4,39,17,10,1680589807,"~/.vimrc"
--'  17  10  ~/.vimrc
-|4,39,17,10,1680589807,"~/.vimrc"
--'  17  10  ~/.vimrc
-|4,39,17,10,1680589807,"~/.vimrc"
--'  17  10  ~/.vimrc
-|4,39,17,10,1680589807,"~/.vimrc"
--'  17  10  ~/.vimrc
-|4,39,17,10,1680589807,"~/.vimrc"
--'  17  10  ~/.vimrc
-|4,39,17,10,1680589807,"~/.vimrc"
--'  17  10  ~/.vimrc
-|4,39,17,10,1680589807,"~/.vimrc"
--'  17  10  ~/.vimrc
-|4,39,17,10,1680589807,"~/.vimrc"
--'  17  10  ~/.vimrc
-|4,39,17,10,1680589807,"~/.vimrc"
+-'  1  16  ~/xv6-public/rand.h
+|4,39,1,16,1684577956,"~/xv6-public/rand.h"
+-'  1  0  ~/xv6-public/proc.c
+|4,39,1,0,1684577934,"~/xv6-public/proc.c"
+-'  1  0  ~/xv6-public/proc.c
+|4,39,1,0,1684577934,"~/xv6-public/proc.c"
+-'  328  0  ~/xv6-public/proc.c
+|4,39,328,0,1684577757,"~/xv6-public/proc.c"
+-'  328  0  ~/xv6-public/proc.c
+|4,39,328,0,1684577757,"~/xv6-public/proc.c"
+-'  328  0  ~/xv6-public/proc.c
+|4,39,328,0,1684577757,"~/xv6-public/proc.c"
+-'  328  0  ~/xv6-public/proc.c
+|4,39,328,0,1684577757,"~/xv6-public/proc.c"
+-'  1  0  ~/xv6-public/proc.c
+|4,39,1,0,1684577684,"~/xv6-public/proc.c"
+-'  1  0  ~/xv6-public/proc.c
+|4,39,1,0,1684577684,"~/xv6-public/proc.c"
+-'  1  0  ~/xv6-public/proc.c
+|4,39,1,0,1684577645,"~/xv6-public/proc.c"
+-'  1  0  ~/xv6-public/proc.c
+|4,39,1,0,1684577645,"~/xv6-public/proc.c"
+-'  3  22  ~/xv6-public/rand.h
+|4,39,3,22,1684577631,"~/xv6-public/rand.h"
+-'  2  22  ~/xv6-public/rand.h
+|4,39,2,22,1684577631,"~/xv6-public/rand.h"
+-'  2  22  ~/xv6-public/rand.h
+|4,39,2,22,1684577631,"~/xv6-public/rand.h"
+-'  2  22  ~/xv6-public/rand.h
+|4,39,2,22,1684577631,"~/xv6-public/rand.h"
+-'  2  22  ~/xv6-public/rand.h
+|4,39,2,22,1684577631,"~/xv6-public/rand.h"
+-'  2  22  ~/xv6-public/rand.h
+|4,39,2,22,1684577631,"~/xv6-public/rand.h"
+-'  2  22  ~/xv6-public/rand.h
+|4,39,2,22,1684577631,"~/xv6-public/rand.h"
+-'  2  22  ~/xv6-public/rand.h
+|4,39,2,22,1684577631,"~/xv6-public/rand.h"
+-'  2  22  ~/xv6-public/rand.h
+|4,39,2,22,1684577631,"~/xv6-public/rand.h"
+-'  1  0  ~/xv6-public/rand.h
+|4,39,1,0,1684577623,"~/xv6-public/rand.h"
+-'  1  0  ~/xv6-public/rand.h
+|4,39,1,0,1684577623,"~/xv6-public/rand.h"
+-'  1  0  ~/xv6-public/rand.h
+|4,39,1,0,1684577623,"~/xv6-public/rand.h"
+-'  1  0  ~/xv6-public/rand.h
+|4,39,1,0,1684577623,"~/xv6-public/rand.h"
+-'  1  0  ~/xv6-public/rand.h
+|4,39,1,0,1684577623,"~/xv6-public/rand.h"
+-'  1  0  ~/xv6-public/rand.h
+|4,39,1,0,1684577623,"~/xv6-public/rand.h"
+-'  1  0  ~/xv6-public/rand.h
+|4,39,1,0,1684577623,"~/xv6-public/rand.h"
+-'  1  0  ~/xv6-public/rand.h
+|4,39,1,0,1684577623,"~/xv6-public/rand.h"
+-'  20  13  ~/xv6-public/rand.c
+|4,39,20,13,1684577621,"~/xv6-public/rand.c"
+-'  20  13  ~/xv6-public/rand.c
+|4,39,20,13,1684577621,"~/xv6-public/rand.c"
+-'  20  13  ~/xv6-public/rand.c
+|4,39,20,13,1684577621,"~/xv6-public/rand.c"
+-'  20  13  ~/xv6-public/rand.c
+|4,39,20,13,1684577621,"~/xv6-public/rand.c"
+-'  20  13  ~/xv6-public/rand.c
+|4,39,20,13,1684577621,"~/xv6-public/rand.c"
+-'  20  13  ~/xv6-public/rand.c
+|4,39,20,13,1684577621,"~/xv6-public/rand.c"
+-'  20  13  ~/xv6-public/rand.c
+|4,39,20,13,1684577621,"~/xv6-public/rand.c"
+-'  20  13  ~/xv6-public/rand.c
+|4,39,20,13,1684577621,"~/xv6-public/rand.c"
+-'  20  13  ~/xv6-public/rand.c
+|4,39,20,13,1684577621,"~/xv6-public/rand.c"
+-'  20  13  ~/xv6-public/rand.c
+|4,39,20,13,1684577621,"~/xv6-public/rand.c"
+-'  20  13  ~/xv6-public/rand.c
+|4,39,20,13,1684577621,"~/xv6-public/rand.c"
+-'  20  13  ~/xv6-public/rand.c
+|4,39,20,13,1684577621,"~/xv6-public/rand.c"
+-'  20  13  ~/xv6-public/rand.c
+|4,39,20,13,1684577621,"~/xv6-public/rand.c"
+-'  20  13  ~/xv6-public/rand.c
+|4,39,20,13,1684577621,"~/xv6-public/rand.c"
+-'  20  13  ~/xv6-public/rand.c
+|4,39,20,13,1684577621,"~/xv6-public/rand.c"
+-'  20  13  ~/xv6-public/rand.c
+|4,39,20,13,1684577621,"~/xv6-public/rand.c"
+-'  20  13  ~/xv6-public/rand.c
+|4,39,20,13,1684577621,"~/xv6-public/rand.c"
+-'  20  13  ~/xv6-public/rand.c
+|4,39,20,13,1684577621,"~/xv6-public/rand.c"
+-'  20  13  ~/xv6-public/rand.c
+|4,39,20,13,1684577621,"~/xv6-public/rand.c"
+-'  20  13  ~/xv6-public/rand.c
+|4,39,20,13,1684577621,"~/xv6-public/rand.c"
+-'  20  13  ~/xv6-public/rand.c
+|4,39,20,13,1684577621,"~/xv6-public/rand.c"
+-'  20  13  ~/xv6-public/rand.c
+|4,39,20,13,1684577621,"~/xv6-public/rand.c"
+-'  20  13  ~/xv6-public/rand.c
+|4,39,20,13,1684577621,"~/xv6-public/rand.c"
+-'  20  13  ~/xv6-public/rand.c
+|4,39,20,13,1684577621,"~/xv6-public/rand.c"
+-'  20  13  ~/xv6-public/rand.c
+|4,39,20,13,1684577621,"~/xv6-public/rand.c"
+-'  20  13  ~/xv6-public/rand.c
+|4,39,20,13,1684577621,"~/xv6-public/rand.c"
+-'  20  13  ~/xv6-public/rand.c
+|4,39,20,13,1684577621,"~/xv6-public/rand.c"
+-'  20  13  ~/xv6-public/rand.c
+|4,39,20,13,1684577621,"~/xv6-public/rand.c"
+-'  20  13  ~/xv6-public/rand.c
+|4,39,20,13,1684577621,"~/xv6-public/rand.c"
+-'  20  13  ~/xv6-public/rand.c
+|4,39,20,13,1684577621,"~/xv6-public/rand.c"
+-'  20  13  ~/xv6-public/rand.c
+|4,39,20,13,1684577621,"~/xv6-public/rand.c"
+-'  20  13  ~/xv6-public/rand.c
+|4,39,20,13,1684577621,"~/xv6-public/rand.c"
+-'  1  0  ~/xv6-public/rand.c
+|4,39,1,0,1684577602,"~/xv6-public/rand.c"
+-'  1  0  ~/xv6-public/rand.c
+|4,39,1,0,1684577602,"~/xv6-public/rand.c"
+-'  1  0  ~/xv6-public/rand.c
+|4,39,1,0,1684577602,"~/xv6-public/rand.c"
+-'  1  0  ~/xv6-public/rand.c
+|4,39,1,0,1684577602,"~/xv6-public/rand.c"
+-'  1  0  ~/xv6-public/rand.c
+|4,39,1,0,1684577602,"~/xv6-public/rand.c"
+-'  1  0  ~/xv6-public/rand.c
+|4,39,1,0,1684577602,"~/xv6-public/rand.c"
+-'  1  0  ~/xv6-public/rand.c
+|4,39,1,0,1684577602,"~/xv6-public/rand.c"
+-'  1  0  ~/xv6-public/rand.c
+|4,39,1,0,1684577602,"~/xv6-public/rand.c"
+-'  1  0  ~/xv6-public/rand.c
+|4,39,1,0,1684577602,"~/xv6-public/rand.c"
+-'  1  0  ~/xv6-public/rand.c
+|4,39,1,0,1684577602,"~/xv6-public/rand.c"
+-'  1  0  ~/xv6-public/rand.c
+|4,39,1,0,1684577602,"~/xv6-public/rand.c"
+-'  1  0  ~/xv6-public/rand.c
+|4,39,1,0,1684577602,"~/xv6-public/rand.c"
+-'  1  0  ~/xv6-public/rand.c
+|4,39,1,0,1684577602,"~/xv6-public/rand.c"
+-'  1  0  ~/xv6-public/rand.c
+|4,39,1,0,1684577602,"~/xv6-public/rand.c"
+-'  1  0  ~/xv6-public/rand.c
+|4,39,1,0,1684577602,"~/xv6-public/rand.c"
+-'  1  0  ~/xv6-public/rand.c
+|4,39,1,0,1684577602,"~/xv6-public/rand.c"
+-'  1  0  ~/xv6-public/rand.c
+|4,39,1,0,1684577602,"~/xv6-public/rand.c"
+-'  1  0  ~/xv6-public/rand.c
+|4,39,1,0,1684577602,"~/xv6-public/rand.c"
+-'  1  0  ~/xv6-public/rand.c
+|4,39,1,0,1684577602,"~/xv6-public/rand.c"
+-'  1  0  ~/xv6-public/rand.c
+|4,39,1,0,1684577602,"~/xv6-public/rand.c"
+-'  1  0  ~/xv6-public/rand.c
+|4,39,1,0,1684577602,"~/xv6-public/rand.c"
+-'  1  0  ~/xv6-public/rand.c
+|4,39,1,0,1684577602,"~/xv6-public/rand.c"
+-'  1  0  ~/xv6-public/rand.c
+|4,39,1,0,1684577602,"~/xv6-public/rand.c"
+-'  1  0  ~/xv6-public/rand.c
+|4,39,1,0,1684577602,"~/xv6-public/rand.c"
+-'  1  0  ~/xv6-public/rand.c
+|4,39,1,0,1684577602,"~/xv6-public/rand.c"
+-'  1  0  ~/xv6-public/rand.c
+|4,39,1,0,1684577602,"~/xv6-public/rand.c"
+-'  1  0  ~/xv6-public/rand.c
+|4,39,1,0,1684577602,"~/xv6-public/rand.c"
+-'  1  0  ~/xv6-public/rand.c
+|4,39,1,0,1684577602,"~/xv6-public/rand.c"
+-'  1  0  ~/xv6-public/rand.c
+|4,39,1,0,1684577602,"~/xv6-public/rand.c"
+-'  1  0  ~/xv6-public/rand.c
+|4,39,1,0,1684577602,"~/xv6-public/rand.c"
+-'  1  0  ~/xv6-public/rand.c
+|4,39,1,0,1684577602,"~/xv6-public/rand.c"
+-'  1  0  ~/xv6-public/rand.c
+|4,39,1,0,1684577602,"~/xv6-public/rand.c"
+-'  1  20  ~/xv6-public/rand.h
+|4,39,1,20,1684577600,"~/xv6-public/rand.h"
+-'  1  20  ~/xv6-public/rand.h
+|4,39,1,20,1684577600,"~/xv6-public/rand.h"
+-'  1  20  ~/xv6-public/rand.h
+|4,39,1,20,1684577600,"~/xv6-public/rand.h"
+-'  1  20  ~/xv6-public/rand.h
+|4,39,1,20,1684577600,"~/xv6-public/rand.h"
+-'  1  20  ~/xv6-public/rand.h
+|4,39,1,20,1684577600,"~/xv6-public/rand.h"
+-'  1  20  ~/xv6-public/rand.h
+|4,39,1,20,1684577600,"~/xv6-public/rand.h"
+-'  1  20  ~/xv6-public/rand.h
+|4,39,1,20,1684577600,"~/xv6-public/rand.h"
+-'  1  20  ~/xv6-public/rand.h
+|4,39,1,20,1684577600,"~/xv6-public/rand.h"
 
 # History of marks within files (newest to oldest):
+
+> ~/xv6-public/rand.h
+	*	1684577954	0
+	"	1	16
+	^	1	17
+	.	1	16
+	+	3	32
+	+	1	25
+	+	3	22
+	+	1	21
+	+	3	22
+	+	1	16
+
+> ~/xv6-public/proc.c
+	*	1684577870	0
+	"	1	0
+	^	345	31
+	.	345	30
+	+	9	17
+	+	92	17
+	+	347	13
+	+	329	28
+	+	13	26
+	+	329	0
+	+	339	34
+	+	337	8
+	+	333	11
+	+	345	30
+
+> ~/xv6-public/rand.c
+	*	1684577619	0
+	"	20	13
+	^	10	24
+	.	15	1
+	+	3	12
+	+	10	1
+	+	9	23
+	+	10	17
+	+	6	19
+	+	9	3
+	+	10	18
+	+	21	0
+	+	9	25
+	+	3	12
+	+	6	0
+	+	3	12
+	+	9	0
+	+	22	0
+	+	21	9
+	+	20	13
+	+	20	0
+	+	16	15
+	+	20	13
+	+	20	0
+	+	18	13
+	+	19	9
+	+	20	12
+	+	13	32
+	+	4	24
+	+	6	29
+	+	8	23
+	+	10	15
+	+	8	24
+	+	10	22
+	+	22	1
+	+	18	8
+	+	17	6
+	+	16	22
+	+	8	13
+	+	6	5
+	+	6	28
+	+	13	5
+	+	13	35
+	+	7	0
+	+	14	0
+	+	10	23
+	+	8	1
+	+	15	1
+
+> ~/xv6-public/Makefile
+	*	1684577305	0
+	"	185	6
+	^	185	7
+	.	185	6
+	+	184	5
+	+	255	25
+	+	186	0
+	+	185	6
+
+> ~/xv6-public/sysproc.c
+	*	1684562508	0
+	"	94	8
+	^	94	9
+	.	94	8
+	+	95	0
+	+	93	4
+	+	91	1
+	+	101	1
+	+	106	22
+	+	107	0
+	+	99	8
+	+	106	15
+	+	94	8
+
+> ~/xv6-public/proc.h
+	*	1684562179	0
+	"	22	0
+	^	52	40
+	.	52	39
+	+	52	39
+
+> ~/xv6-public/test.c
+	*	1684562022	0
+	"	12	4
+	^	13	68
+	.	13	67
+	+	15	1
+	+	7	35
+	+	14	10
+	+	15	1
+	+	7	10
+	+	14	8
+	+	6	6
+	+	7	27
+	+	10	12
+	+	14	14
+	+	11	38
+	+	14	0
+	+	13	70
+	+	12	0
+	+	11	60
+	+	13	67
+
+> ~/xv6-public/user.h
+	*	1684561990	0
+	"	1	0
+	^	27	21
+	.	27	21
+	+	26	23
+	+	27	21
+
+> ~/xv6-public/usys.S
+	*	1684561982	0
+	"	1	0
+	^	33	19
+	.	33	18
+	+	32	0
+	+	32	21
+	+	33	18
+
+> ~/xv6-public/syscall.c
+	*	1684561921	0
+	"	122	0
+	^	41	28
+	.	132	32
+	+	131	22
+	+	129	24
+	+	131	35
+	+	106	34
+	+	107	31
+	+	132	32
+
+> ~/xv6-public/syscall.h
+	*	1684561718	0
+	"	24	24
+	^	24	25
+	.	24	24
+	+	23	0
+	+	23	27
+	+	24	24
+
+> ~/xv6-public/sys_setuptickets.c
+	*	1684560203	0
+	"	1	0
+
+> ~/xv6-public/setup_tickets.c
+	*	1684560179	0
+	"	5	12
+	^	5	13
+	.	5	12
+	+	11	0
+	+	4	0
+	+	2	17
+	+	3	15
+	+	5	12
+
+> ~/xv6-public/test.h
+	*	1684560007	0
+	"	1	0
 
 > ~/xv6-public/test
 	*	1680594535	0
@@ -294,18 +536,6 @@
 	.	2	12
 	+	2	12
 
-> ~/xv6-public/test.c
-	*	1680590425	0
-	"	7	7
-	^	7	8
-	.	7	8
-	+	8	1
-	+	6	35
-	+	7	10
-	+	8	1
-	+	6	10
-	+	7	8
-
 > ~/.vimrc
 	*	1680589804	0
 	"	17	10
@@ -314,26 +544,6 @@
 	+	19	28
 	+	19	0
 	+	17	10
-
-> ~/xv6-public/syscall.h
-	*	1680588845	0
-	"	22	0
-	.	23	0
-	+	23	0
-
-> ~/xv6-public/usys.S
-	*	1680588816	0
-	"	31	0
-	.	32	0
-	+	32	0
-
-> ~/xv6-public/Makefile
-	*	1680587981	0
-	"	254	25
-	^	254	26
-	.	254	25
-	+	184	5
-	+	254	25
 
 > ~/xv6-public/defs.h
 	*	1680587915	0
@@ -345,10 +555,6 @@
 	^	2	3
 	.	2	2
 	+	2	2
-
-> ~/xv6-public/syscall.c
-	*	1680582563	0
-	"	118	0
 
 > ~/sudo
 	*	1680245520	0
